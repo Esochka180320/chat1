@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+	<style>
+		html, body{
+			background: grey;
+			padding: 0px;
+
+
+		}
+
+		#game {
+			width: 450px;
+			height: 450px;
+			background:red;
+			margin: 0 auto;
+			margin-top: 3%;
+		}
+
+		.block {
+			width: 150px;
+			height: 150px;
+			float: left;
+			border: 1px solid white;
+			box-sizing: border-box;
+			line-height: 50px;
+			text-align: center;
+			text-transform: uppercase;
+		}
+
+		.block > div{
+			margin-top: 30%;
+			font-size: 5em;
+
+		}
+
+		.footer{
+
+			margin-top:1%;
+			color: white;
+			padding: 5% 13%;
+			display: flex;
+
+		}
+		#game::after{
+			content: "Counter";
+			font-size: 2em;
+			margin-left:40%;
+		}
+		.winx ,.win0 ,.whowin{
+
+			font-size: 2em;
+		}
+
+		.winx{
+			position: absolute;
+			top: 580px;
+			left: 10%;
+
+		}
+		.win0{
+			position: absolute;
+			top: 580px;
+			right: 10%;
+
+		}
+		.whowin{
+			position: absolute;
+			top: 580px;
+			left: 50%;
+		}
+
+	</style>
+
+
+</head>
+
+          <body>
+
+      <div id="game"></div>
+      <br>
+
+
+
+
+      <footer class="footer">
+
+      	<div class="winx">winX:<span class="winxx">0</span></div>
+      	<div class="whowin" >=</div>
+      	<div class="win0">win0:<span class="win00">0</span></div>
+		  <div>
+			  <form action="/cancel">
+				  <button id="settings"><i class="fa fa-cog fa-fw" aria-hidden="true"></i> <span>Back</span></button>
+			  </form>
+		  </div>
+
+
+
+
+      </footer>
+
+	  <script>
+		  window.onload = function () {
+
+			  for (var i=0; i<9; i++) {
+
+
+				  $('#game').append('<div class="block ' + i +'"></div>');
+
+
+			  }
+
+			  var x=0
+			  var hod = 0;
+			  var o=0
+
+			  $('.block').on('click', (e) =>  {
+
+				  if ($(e.currentTarget).hasClass('block') && !($(e.currentTarget).hasClass('x')) && !($(e.currentTarget).hasClass('-x'))) {
+					  if (hod%2==0){
+
+						  $(e.currentTarget).html('<div>x</div>');
+						  $(e.currentTarget).addClass('x');
+
+					  }
+					  else {
+
+						  $(e.currentTarget).html('<div>0</div>');
+						  $(e.currentTarget).addClass('-x');
+					  }
+					  hod++;
+
+				  }
+
+
+				  if($('.0').hasClass('x') && $('.3').hasClass('x') && $('.6').hasClass('x')){
+
+
+					  winx();
+					  whowin();
+				  }
+				  if($('.1').hasClass('x') && $('.4').hasClass('x') && $('.7').hasClass('x')){
+
+
+					  winx();
+					  whowin();
+				  }
+				  if($('.2').hasClass('x') && $('.5').hasClass('x') && $('.8').hasClass('x')){
+
+
+					  winx();
+					  whowin();
+				  }
+				  if($('.0').hasClass('x') && $('.1').hasClass('x') && $('.2').hasClass('x')){
+
+
+					  winx();
+					  whowin();
+				  }
+				  if($('.3').hasClass('x') && $('.4').hasClass('x') && $('.5').hasClass('x')){
+
+
+					  winx();
+					  whowin();
+				  }
+				  if($('.6').hasClass('x') && $('.7').hasClass('x') && $('.8').hasClass('x')){
+
+
+					  winx();
+					  whowin();
+				  }
+				  if($('.0').hasClass('x') && $('.4').hasClass('x') && $('.8').hasClass('x')){
+
+
+					  winx();
+					  whowin();
+				  }
+				  if($('.2').hasClass('x') && $('.4').hasClass('x') && $('.6').hasClass('x')){
+
+
+					  winx();
+					  whowin();
+				  }
+				  if($('.0').hasClass('-x') && $('.3').hasClass('-x') && $('.6').hasClass('-x')){
+
+					  win0();
+					  whowin();
+				  }
+				  if($('.1').hasClass('-x') && $('.4').hasClass('-x') && $('.7').hasClass('-x')){
+
+
+					  win0();
+					  whowin();
+				  }
+				  if($('.2').hasClass('-x') && $('.5').hasClass('-x') && $('.8').hasClass('-x')){
+
+
+					  win0();
+					  whowin();
+				  }
+				  if($('.0').hasClass('-x') && $('.1').hasClass('-x') && $('.2').hasClass('-x')){
+
+
+					  win0();
+					  whowin();
+				  }
+				  if($('.3').hasClass('-x') && $('.4').hasClass('-x') && $('.5').hasClass('-x')){
+
+
+					  win0();
+					  whowin();
+				  }
+				  if($('.6').hasClass('-x') && $('.7').hasClass('-x') && $('.8').hasClass('-x')){
+
+
+					  win0();
+					  whowin();
+				  }
+				  if($('.0').hasClass('-x') && $('.4').hasClass('-x') && $('.8').hasClass('-x')){
+
+
+					  win0();
+					  whowin();
+				  }
+				  if($('.2').hasClass('-x') && $('.4').hasClass('-x') && $('.6').hasClass('-x')){
+
+
+					  win0();
+					  whowin();
+				  }
+
+				  if(($('.0').hasClass('-x') || $('.0').hasClass('x')) && ($('.1').hasClass('-x') || $('.1').hasClass('x')) && ($('.2').hasClass('-x') || $('.2').hasClass('x')) && ($('.3').hasClass('-x') || $('.3').hasClass('x')) && ($('.4').hasClass('-x') || $('.4').hasClass('x')) && ($('.5').hasClass('-x') || $('.5').hasClass('x')) && ($('.6').hasClass('-x') || $('.6').hasClass('x')) && ($('.7').hasClass('-x') || $('.7').hasClass('x')) && ($('.8').hasClass('-x') || $('.8').hasClass('x')) )
+				  {
+					  draw();
+				  }
+
+			  });
+
+
+			  function winx(){
+				  x++;
+				  alert('win x');
+
+				  if($('.block').hasClass('-x') || $('.block').hasClass('x')){
+
+					  return $('.block').removeClass('-x') && $('.block').removeClass('x') && $('.block').html(' ') && $('.winxx').html(x);
+
+				  }
+
+			  }
+			  function win0(){
+				  o++;
+				  alert('win 0');
+
+				  if($('.block').hasClass('-x') || $('.block').hasClass('x')){
+
+					  return $('.block').removeClass('-x') && $('.block').removeClass('x') && $('.block').html(' ') && $('.win00').html(o);
+
+				  }
+
+			  }
+
+			  function draw(){
+
+				  alert('draw');
+
+				  if($('.block').hasClass('-x') || $('.block').hasClass('x')){
+
+					  return $('.block').removeClass('-x') && $('.block').removeClass('x') && $('.block').html(' ') ;
+
+				  }
+
+			  }
+			  function whowin(){
+
+				  if($('.winxx').text()>$('.win00').text() ){
+
+					  return $('.whowin').html(">");
+
+				  }
+				  else if($('.winxx').text()<$('.win00').text() ){
+
+					  return $('.whowin').html("<");
+
+				  }
+				  else{
+					  return $('.whowin').html("=");
+				  }
+
+			  }
+
+
+
+
+		  }
+	  </script>
+
+
+
+</body>
+</html>

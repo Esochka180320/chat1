@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Log in/Sign up screen animation</title>
+    <link rel="stylesheet" href="./css/sign.css">
+      <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+    <script src="./js/sign.js"></script>
+
+</head>
+
+<body>
+
+
+<div class="container">
+  <div class="frame">
+    <div class="nav">
+
+      <ul class="links">
+        <li class="signin-active"><a class="btn">Sign in</a></li>
+        <li class="signup-inactive"><a class="btn">Sign up </a></li>
+      </ul>
+    </div>
+    <div ng-app ng-init="checked = false">
+
+        <!-- /login?error=true-->
+
+
+        <form class="form-signin" th:action="@{/j_spring_security_check}" method='POST'>
+            <label for="login">LOGIN</label>
+            <input class="form-styling" type="email" name="login" placeholder="" id="login" required>
+          <label for="password">Password</label>
+          <input class="form-styling" type="password" name="password" id="password" placeholder="" required>
+
+<!--            <div th:if="${#request.getParameter('error') == 'true'}"-->
+<!--                 style="color:red;margin:10px 0px;">-->
+<!--                Wrong password or email!!!<br />-->
+<!--            </div>-->
+            <div class="btn-animate">
+            <button class="btn-signin">Sign in</button>
+          </div>
+				        </form>
+
+				        <form class="form-signup" action="/registration" method="post">
+
+                            <label>Username</label>
+                            <input class="form-styling" type="email" name="log" placeholder="" required>
+                            <label for="password">Password</label>
+                            <input class="form-styling pass" type="password" name="pass"  placeholder="" required>
+                            <label for="confirmpassword">Confirm password</label>
+                            <input class="form-styling confir" type="password" id="confirmpassword" name="reregpass" placeholder="" >
+                            <button  class="btn-signup  " >Sign Up</button>
+                        </form>
+
+
+
+      </div>
+
+      <div class="forgot">
+          <a href="#" class="forgot-a" >Forgot your password?</a>
+
+
+          <div
+               style="color:greenyellow;margin:10px 0px;">
+              <span th:text="${message}"></span>
+
+          </div>
+
+      </div>
+
+  </div>
+
+</div>
+
+
+</body>
+</html>

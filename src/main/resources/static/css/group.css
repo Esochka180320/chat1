@@ -1,0 +1,10 @@
+
+ .input-group {
+    padding-top: 8%;
+    padding-left: 111px;
+    padding-right: 33%;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    -ms-flex-align: stretch;}
+
